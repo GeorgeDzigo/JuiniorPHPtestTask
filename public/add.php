@@ -30,21 +30,21 @@
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">SKU</label>
             <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="SKU">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="SKU" name="sku">
             </div>
       </div>
       
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="Name">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="Name" name="name">
             </div>
       </div>
 
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Price ($)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price" name="price">
             </div>
       </div>
 
@@ -65,7 +65,7 @@
       <div class="form-group row" id="mb">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Size (MB)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Size" name='mb'>
             </div>
       </div>
 
@@ -74,19 +74,19 @@
             <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Height (CM)</label>
                   <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Height">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Height" name="hcm">
                   </div>
             </div>
             <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Width (CM)</label>
                   <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Width">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Width" name="wcm">
                   </div>
             </div>
             <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Length (CM)</label>
                   <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Length">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Length" name="lcm">
                   </div>
             </div>
       </div>
@@ -94,7 +94,7 @@
       <div class="form-group row" id="kg">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Weight (KG)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Weight" name="wkg">
             </div>
       </div>
 
