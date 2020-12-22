@@ -15,7 +15,7 @@
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">
-                  <a href="#">Add</a>
+                  <a href="./add.php">Add</a>
                   <a href="#">Mass Delete</a>
             </div>
       </header>

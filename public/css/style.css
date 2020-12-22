@@ -28,3 +28,23 @@ a {
 .card{
       margin: 6px;
 }
+
+.form-control{
+      width: 16%;
+}
+
+.col-sm-2{
+      width: 6.666667%;
+}
+
+.col-sm-10{
+      width: 87.666667%;
+      padding: 5px;
+}
+
+.inputs{
+      max-width: 1800px;
+      position: relative;
+      left: 7%;
+      top:45px;
+}
