@@ -39,7 +39,7 @@ require_once '../db.php';
       <div class="cards d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                   <div class="card-body">
-                  <input type="checkbox">
+                  <input type="checkbox" value="<?=$row["unique_id"]?>" name="<?= $row['name']?>">
                         <h5 class="card-title text-center"><?=$row["sku"]?></h5>
                         <h5 class="card-title text-center"><?=$row["name"]?></h5>
                   </div>

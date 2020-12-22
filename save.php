@@ -3,6 +3,7 @@
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once './db.php';
+            require_once './uv_gen.php';
             $sku = $_POST['sku'];
             $n = $_POST['name'];
             $price = $_POST['price'];
@@ -45,7 +46,7 @@
             $statement->bindValue(':w', $wcm);
             $statement->bindValue(':l', $lcm);
             $statement->bindValue(':k', $wkg);
-            // $statement->bindValue(':uv', )
+            $statement->bindValue(':uv', gen(7));
             $statement->execute();
 
             header("Location: ./public/");
