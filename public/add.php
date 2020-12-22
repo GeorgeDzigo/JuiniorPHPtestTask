@@ -61,7 +61,43 @@
       </div>
 
 
-      
+      <!-- MB -->
+      <div class="form-group row" id="mb">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Size (MB)</label>
+            <div class="col-sm-10">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price">
+            </div>
+      </div>
+
+      <!-- CM -->
+      <div id="cm">
+            <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Height (CM)</label>
+                  <div class="col-sm-10">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Height">
+                  </div>
+            </div>
+            <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Width (CM)</label>
+                  <div class="col-sm-10">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Width">
+                  </div>
+            </div>
+            <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Length (CM)</label>
+                  <div class="col-sm-10">
+                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Length">
+                  </div>
+            </div>
+      </div>
+      <!-- KG -->
+      <div class="form-group row" id="kg">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Weight (KG)</label>
+            <div class="col-sm-10">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price">
+            </div>
+      </div>
+
       
 </div>
 </form>
