@@ -1,0 +1,30 @@
+.funcs{
+      display: inline-block;
+      position: relative;
+      left: 70%;
+}
+header{
+      margin-top: 15px;
+}
+
+h3 {
+      display: inline;
+      position: relative;
+      left: 8%;
+}
+a {
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      border: 1px solid #606060;
+}
+.hr{
+      width: 1800px;
+      margin: 13px;
+      margin-bottom: 14px;
+}
+
+.card{
+      margin: 6px;
+}
