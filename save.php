@@ -25,7 +25,7 @@
                   $wkg = null;
             }
             // Weight 
-            else if(strlen($_POST['hcm']) != 0) {
+            else if(strlen($_POST['wkg']) != 0) {
                   $wkg = $_POST['wkg'];
                   $mb = null;
                   $hcm = null;
@@ -34,8 +34,8 @@
             }
             
 
-            $statement = $pdo->prepare("INSERT INTO products (sku, name, price, mb, height, width, length, kg)
-                  VALUES(:s, :n, :p, :m, :h, :w, :l, :k)
+            $statement = $pdo->prepare("INSERT INTO products (sku, name, price, mb, height, width, length, kg, unique_id)
+                  VALUES(:s, :n, :p, :m, :h, :w, :l, :k, :uv)
             ");
             $statement->bindValue(':s', $sku);
             $statement->bindValue(':n', $n);
@@ -45,6 +45,7 @@
             $statement->bindValue(':w', $wcm);
             $statement->bindValue(':l', $lcm);
             $statement->bindValue(':k', $wkg);
+            // $statement->bindValue(':uv', )
             $statement->execute();
 
             header("Location: ./public/");

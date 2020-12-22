@@ -1,3 +1,7 @@
+<?php
+require_once '../db.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,37 +15,44 @@
 
   </head>
   <body>
-  
+  <form action="../delete.php" method="POST">
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">
                   <a href="./add.php">Add</a>
-                  <a href="#">Mass Delete</a>
+                  <input type="submit" value='Mass Delete'>
             </div>
       </header>
 
       <center>
             <hr style="width: 1850px;" class="hr">     
       </center>
+      <?php
+      $sql = $pdo->prepare("SELECT * FROM products");
+      $sql->execute();
+      while($row = $sql->fetch(PDO::FETCH_ASSOC)):
+
+            if(gettype($row["mb"]) !== "NULL") $a = "Size: ".$row["mb"] . "MB";
+            else if(gettype($row['kg']) !== "NULL") $a = "Weight: ".$row["kg"] . "KG";
+            else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];
+      ?>
       <div class="cards d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                   <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <input type="checkbox">
+                        <h5 class="card-title text-center"><?=$row["sku"]?></h5>
+                        <h5 class="card-title text-center"><?=$row["name"]?></h5>
                   </div>
                         <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item text-center"><?=$row["price"] . "$"?></li>
+                        <li class="list-group-item text-center"><?=$a?></li>
                   </ul>
-                  <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                  </div>
             </div>
-
+            <?php endwhile?>
       </div>
 
+      </form>
+     
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
