@@ -1,5 +1,7 @@
 <?php
 require_once '../db.php';
+$sql = $pdo->prepare("SELECT * FROM products");
+$sql->execute();
 ?>
 
 <!doctype html>
@@ -19,38 +21,41 @@ require_once '../db.php';
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">
-                  <a href="./add.php">Add</a>
-                  <input type="submit" value='Mass Delete'>
+                  <a href="./add.php" class='a'>Add</a>
+                  <input type="submit" value='Mass Delete' class='a'>
             </div>
       </header>
 
       <center>
             <hr style="width: 1850px;" class="hr">     
       </center>
-      <?php
-      $sql = $pdo->prepare("SELECT * FROM products");
-      $sql->execute();
-      while($row = $sql->fetch(PDO::FETCH_ASSOC)):
-
-            if(gettype($row["mb"]) !== "NULL") $a = "Size: ".$row["mb"] . "MB";
-            else if(gettype($row['kg']) !== "NULL") $a = "Weight: ".$row["kg"] . "KG";
-            else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];
-      ?>
-      <div class="cards d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                  <input type="checkbox" value="<?=$row["unique_id"]?>" name="<?= $row['name']?>">
-                        <h5 class="card-title text-center"><?=$row["sku"]?></h5>
-                        <h5 class="card-title text-center"><?=$row["name"]?></h5>
+     
+  <div class="products">
+      <!-- While loop-->
+            <?php
+            while($row = $sql->fetch(PDO::FETCH_ASSOC)):
+                  if(gettype($row["mb"]) !== "NULL") $a = "Size: ".$row["mb"] . "MB";
+                  else if(gettype($row['kg']) !== "NULL") $a = "Weight: ".$row["kg"] . "KG";
+                  else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];    
+            ?>
+            <div class="cards d-flex justify-content-center" style="display:inline-block!important">
+      
+                  <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <input type="checkbox" value="<?=$row["unique_id"]?>" name="<?= $row['name']?>">
+                              <h5 class="card-title text-center"><?=$row["sku"]?></h5>
+                              <h5 class="card-title text-center"><?=$row["name"]?></h5>
+                        </div>
+                              <ul class="list-group list-group-flush">
+                              <li class="list-group-item text-center prices"><?=$row["price"] . "$"?></li>
+                              <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?=$a?></li>
+                        </ul>
                   </div>
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center"><?=$row["price"] . "$"?></li>
-                        <li class="list-group-item text-center"><?=$a?></li>
-                  </ul>
             </div>
             <?php endwhile?>
       </div>
-
+     
+      <!-- End While -->
       </form>
      
   

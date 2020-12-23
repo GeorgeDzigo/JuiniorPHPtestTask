@@ -4,9 +4,9 @@
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once './db.php';
             require_once './uv_gen.php';
-            $sku = $_POST['sku'];
-            $n = $_POST['name'];
-            $price = $_POST['price'];
+            $sku = htmlspecialchars($_POST['sku'], ENT_QUOTES);
+            $n = htmlspecialchars($_POST['name'], ENT_QUOTES);
+            $price = htmlspecialchars($_POST['price'], ENT_QUOTES);
             // Size (MB)
             if(strlen($_POST['mb']) != 0) {
                   $mb = $_POST['mb'];
@@ -14,6 +14,8 @@
                   $wcm = null;
                   $lcm = null;
                   $wkg = null;
+             
+            
             }
 
 
@@ -26,8 +28,8 @@
                   $wkg = null;
             }
             // Weight 
-            else if(strlen($_POST['wkg']) != 0) {
-                  $wkg = $_POST['wkg'];
+            else if(strlen($_POST['kg']) != 0) {
+                  $wkg = $_POST['kg'];
                   $mb = null;
                   $hcm = null;
                   $wcm = null;

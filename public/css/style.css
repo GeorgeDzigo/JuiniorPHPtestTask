@@ -12,7 +12,8 @@ h3 {
       position: relative;
       left: 8%;
 }
-a {
+.a {
+      color: black;
       text-decoration: none;
       padding: 5px 10px;
       border-radius: 4px;
@@ -58,4 +59,11 @@ a {
 
 #mb , #cm, #kg {
       display: none;
+}
+
+
+.products{
+      width: 64%;
+      margin: auto;
+      margin-top: 3%;
 }
