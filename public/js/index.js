@@ -61,7 +61,10 @@ function inputChecker() {
                                if (v.name == "price") {
                                     btn.type = "button";
                                     let a = /[a-z]/g.test(v.value.toString());
-                                    if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                     if (a) {
+                                           er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                           errors.push(v.name);
+                                    }
                               }
                               else if (v.name == "mb") {
                                     btn.type = "button";
@@ -106,7 +109,4 @@ function inputChecker() {
                   }
             }   
       });
-
-      
-      
 }

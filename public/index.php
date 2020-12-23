@@ -22,13 +22,13 @@ $sql->execute();
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">
-                  <a href="./add.php" class='a'>Add</a>
+                  <a href="./add.php" class='a' id="a">Add</a>
                   <input type="submit" value='Mass Delete' class='a'>
             </div>
       </header>
 
       <center>
-            <hr style="width: 1850px;" class="hr">     
+            <hr style="width: 87%;" class="hr">     
       </center>
      
   <div class="products">

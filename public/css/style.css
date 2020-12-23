@@ -1,3 +1,6 @@
+body{
+      overflow-x: hidden;
+}
 .funcs{
       display: inline-block;
       position: relative;
@@ -12,14 +15,27 @@ h3 {
       position: relative;
       left: 8%;
 }
+
+#a {
+      padding: 0.4em 30px;
+}
+#b {
+      padding: 0.4em 30px;
+}
 .a {
+      background-color: white;
       color: black;
       text-decoration: none;
-      padding: 5px 10px;
+      padding: 5px 30px;
       border-radius: 4px;
       font-weight: bold;
-      border: 1px solid #606060;
+      border: 1px solid #606060;       
 }
+
+#a{
+      padding: 6px 30px;
+}
+
 .hr{
       width: 1800px;
       margin: 13px;

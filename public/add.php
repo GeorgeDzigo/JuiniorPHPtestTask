@@ -18,12 +18,12 @@
                   <h3 style="display: inline;">Product Add</h3>
                   <div class="funcs">
                         <input  type="button" value="Save" class="a" id="btn" onclick="inputChecker()" onclick="checkErrors()">
-                        <a href="./index.php" class="a">Cancel</a>
+                        <a href="./index.php" class="a" id="b">Cancel</a>
                   </div>
             </header>
 
             <center>
-                  <hr style="width: 1850px;" class="hr">     
+                  <hr style="width: 87%;" class="hr">     
             </center>
 
 <div class="inputs">
@@ -44,7 +44,7 @@
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Price ($)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price" name="price">
+                  <input type="decimal" min="0.00" class="form-control" id="inputEmail3" placeholder="Price" name="price">
             </div>
       </div>
 
