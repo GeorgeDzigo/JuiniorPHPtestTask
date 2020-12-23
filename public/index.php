@@ -1,5 +1,6 @@
 <?php
 require_once '../db.php';
+require_once '../id.php';
 $sql = $pdo->prepare("SELECT * FROM products");
 $sql->execute();
 ?>
@@ -36,13 +37,13 @@ $sql->execute();
             while($row = $sql->fetch(PDO::FETCH_ASSOC)):
                   if(gettype($row["mb"]) !== "NULL") $a = "Size: ".$row["mb"] . "MB";
                   else if(gettype($row['kg']) !== "NULL") $a = "Weight: ".$row["kg"] . "KG";
-                  else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];    
+                  else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];
             ?>
             <div class="cards d-flex justify-content-center" style="display:inline-block!important">
       
                   <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                        <input type="checkbox" value="<?=$row["unique_id"]?>" name="<?= $row['name']?>">
+                        <input type="checkbox" value="<?=id($row["unique_id"])?>" name="<?= $row['name']?>">
                               <h5 class="card-title text-center"><?=$row["sku"]?></h5>
                               <h5 class="card-title text-center"><?=$row["name"]?></h5>
                         </div>
