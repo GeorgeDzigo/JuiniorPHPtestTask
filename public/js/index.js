@@ -95,11 +95,14 @@ function inputChecker() {
                                           errors.push(v.name);
                                     }
                                     else if(errors.length == 0 ) btn.type = "submit";
-                               }
-                        } 
-                       
-                        
-                              
+                              }
+                               else if (v.name == "kg") {
+                                    btn.type = "button";
+                                    let a = /[a-z]/g.test(v.value.toString());
+                                    if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                    else btn.type = "submit"
+                              }
+                        }     
                   }
             }   
       });
