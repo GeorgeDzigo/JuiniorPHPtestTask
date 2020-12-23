@@ -13,11 +13,11 @@
   <body>
   
  
-      <!-- <form action="../save.php" method="POST"> -->
+      <form action="../save.php" method="POST">
             <header> 
                   <h3 style="display: inline;">Product Add</h3>
                   <div class="funcs">
-                        <input  type="submit" value="Save" class="a" onclick="inputChecker()">
+                        <input  type="button" value="Save" class="a" id="btn" onclick="inputChecker()" onclick="checkErrors()">
                         <a href="./index.php" class="a">Cancel</a>
                   </div>
             </header>
@@ -30,21 +30,21 @@
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">SKU</label>
             <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="SKU"  name="sku">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="SKU" name="sku">
             </div>
       </div>
       
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="Name"   name="name">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="Name" name="name">
             </div>
       </div>
 
       <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Price ($)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price"   name="price">
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Price" name="price">
             </div>
       </div>
 
@@ -98,16 +98,13 @@
             </div>
       </div>
 
-      <p id="errors"></p>
+      <p id="errors" name="errors"></p>
       
 </div>
 </form>
       
       <!-- Scripts -->
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <!-- My Scripts -->
     <script src="js/index.js"></script>
   </body>
