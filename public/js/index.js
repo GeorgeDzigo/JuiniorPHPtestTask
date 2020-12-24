@@ -66,6 +66,7 @@ function inputChecker() {
                               if (v.name == "price") {
                                     btn.type = "button";
                                     let ar = v.value.toString().split("");
+                                    ar[ar.indexOf(".")] = 0;
                                     for (i = 0; i < ar.length; i++) {
                                           if (parseInt(ar[i]) != ar[i]) {
                                                 btn.type = "button";
