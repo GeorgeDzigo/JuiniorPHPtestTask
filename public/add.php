@@ -65,7 +65,7 @@
       <div class="form-group row" id="mb">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Size (MB)</label>
             <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Size" name='mb'>
+                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Size"name='mb'>
             </div>
       </div>
 

@@ -1,22 +1,27 @@
 function show() { 
       var d = document.getElementById("inputGroupSelect01");
       var dis = d.options[d.selectedIndex].text;
+      let el = document.querySelectorAll("#inputEmail3");
       if (dis == "MB") {
+            el.forEach(v => { if(v.name == "mb" || v.name == "hcm" || v.name == "wcm" || v.name == "lcm" || v.name == "kg") v.value = ""});
             document.getElementById("mb").style.display = "block";
             document.getElementById("cm").style.display = "none";
             document.getElementById("kg").style.display = "none";
       }
       else if (dis == "CM") {
+            el.forEach(v => { if(v.name == "mb" || v.name == "hcm" || v.name == "wcm" || v.name == "lcm" || v.name == "kg") v.value = ""});
             document.getElementById("mb").style.display = "none";
             document.getElementById("cm").style.display = "block";
             document.getElementById("kg").style.display = "none";
       }
       else if (dis == "KG") {
+            el.forEach(v => { if(v.name == "mb" || v.name == "hcm" || v.name == "wcm" || v.name == "lcm" || v.name == "kg") v.value = ""});
             document.getElementById("mb").style.display = "none";
             document.getElementById("cm").style.display = "none";
             document.getElementById("kg").style.display = "block";
       }
       else {
+            el.forEach(v => { if(v.name == "mb" || v.name == "hcm" || v.name == "wcm" || v.name == "lcm" || v.name == "kg") v.value = ""});
             document.getElementById("mb").style.display = "none";
             document.getElementById("cm").style.display = "none";
             document.getElementById("kg").style.display = "none";
@@ -57,22 +62,30 @@ function inputChecker() {
                               er.innerHTML += "<li style='color:red;'>Please, Provide " + v.placeholder + " </li>";
                         }
                         //  Check if values have right answer type
-                        else if (v.value != "") {
-                               if (v.name == "price") {
+                        
+                              if (v.name == "price") {
                                     btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                     if (a) {
-                                           er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                           errors.push(v.name);
+                                    let ar = v.value.toString().split("");
+                                    for (i = 0; i < ar.length; i++) {
+                                          if (parseInt(ar[i]) != ar[i]) {
+                                                btn.type = "button";
+                                                console.log(ar[i]);
+                                               errors.push(v.name);
+                                               er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                               break;
+                                          }
                                     }
-                              }
+                             }
                               else if (v.name == "mb") {
                                     btn.type = "button";
                                     let a = /[a-z]/g.test(v.value.toString());
                                     if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                    else btn.type = "submit"
-                              } 
-                               else if (v.name == "hcm") {
+                                    else if(errors.length == 0) btn.type = "submit"
+                              }  
+                              
+                             
+                             
+                              else if (v.name == "hcm") {
                                     btn.type = "button";
                                     let a = /[a-z]/g.test(v.value.toString());
                                      if (a) {
@@ -90,7 +103,7 @@ function inputChecker() {
                                     }
                                     else if(errors.length == 0 ) btn.type = "submit";
                                }
-                               else if (v.name == "lcm") {
+                               else  if (v.name == "lcm") {
                                     btn.type = "button";
                                     let a = /[a-z]/g.test(v.value.toString());
                                      if (a) {
@@ -99,13 +112,12 @@ function inputChecker() {
                                     }
                                     else if(errors.length == 0 ) btn.type = "submit";
                               }
-                               else if (v.name == "kg") {
+                              else  if (v.name == "kg") {
                                     btn.type = "button";
                                     let a = /[a-z]/g.test(v.value.toString());
                                     if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
                                     else btn.type = "submit"
                               }
-                        }     
                   }
             }   
       });
