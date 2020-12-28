@@ -76,7 +76,6 @@ function inputChecker() {
                               for (i = 0; i < ar.length; i++) {
                                     if (parseInt(ar[i]) != ar[i]) {
                                           btn.type = "button";
-                                          console.log(ar[i]);
                                           errors.push(v.name);
                                           er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
                                           break;
