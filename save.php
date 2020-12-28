@@ -1,9 +1,6 @@
 <?php
-
-
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once './db.php';
-            require_once './uv_gen.php';
             $sku = htmlspecialchars($_POST['sku'], ENT_QUOTES);
             $n = htmlspecialchars($_POST['name'], ENT_QUOTES);
             $price = htmlspecialchars($_POST['price'], ENT_QUOTES);
@@ -35,21 +32,9 @@
                   $wcm = null;
                   $lcm = null;
             }
+            $insert = new Save($sku, $n, $price, $mb, $hcm, $wcm, $lcm, $wkg);
+            $insert->insertProduct();
             
-
-            $statement = $pdo->prepare("INSERT INTO products (sku, name, price, mb, height, width, length, kg, unique_id)
-                  VALUES(:s, :n, :p, :m, :h, :w, :l, :k, :uv)
-            ");
-            $statement->bindValue(':s', $sku);
-            $statement->bindValue(':n', $n);
-            $statement->bindValue(':p', $price);
-            $statement->bindValue(':m', $mb);
-            $statement->bindValue(':h', $hcm);
-            $statement->bindValue(':w', $wcm);
-            $statement->bindValue(':l', $lcm);
-            $statement->bindValue(':k', $wkg);
-            $statement->bindValue(':uv', gen(7));
-            $statement->execute();
 
             header("Location: ./public/");
 

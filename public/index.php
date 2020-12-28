@@ -1,10 +1,8 @@
 <?php
 require_once '../db.php';
 require_once '../id.php';
-$sql = $pdo->prepare("SELECT * FROM products");
-$sql->execute();
+$data = new Show();
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,26 +32,29 @@ $sql->execute();
   <div class="products">
       <!-- While loop-->
             <?php
-            while($row = $sql->fetch(PDO::FETCH_ASSOC)):
-                  if(gettype($row["mb"]) !== "NULL") $a = "Size: ".$row["mb"] . "MB";
-                  else if(gettype($row['kg']) !== "NULL") $a = "Weight: ".$row["kg"] . "KG";
-                  else $a = "Dimension: ". $row['height']."x".$row['width']."x".$row['length'];
+            if($data->show() != 0){
+            foreach($data->show() as $v):
+                  if(gettype($v["mb"]) !== "NULL") $a = "Size: ".$v["mb"] . "MB";
+                  else if(gettype($v['kg']) !== "NULL") $a = "Weight: ".$v["kg"] . "KG";
+                  else $a = "Dimension: ". $v['height']."x".$v['width']."x".$v['length'];
             ?>
             <div class="cards d-flex justify-content-center" style="display:inline-block!important">
       
                   <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                        <input type="checkbox" value="<?=id($row["unique_id"])?>" name="<?= $row['name']?>">
-                              <h5 class="card-title text-center"><?=$row["sku"]?></h5>
-                              <h5 class="card-title text-center"><?=$row["name"]?></h5>
+                        <input type="checkbox" value="<?=id($v["unique_id"])?>" name="<?= $v['name']?>">
+                              <h5 class="card-title text-center"><?=$v["sku"]?></h5>
+                              <h5 class="card-title text-center"><?=$v["name"]?></h5>
                         </div>
                               <ul class="list-group list-group-flush">
-                              <li class="list-group-item text-center prices"><?=$row["price"] . "$"?></li>
+                              <li class="list-group-item text-center prices"><?=$v["price"] . "$"?></li>
                               <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?=$a?></li>
                         </ul>
                   </div>
             </div>
-            <?php endwhile?>
+            <?php 
+            endforeach;
+            }?>
       </div>
      
       <!-- End While -->
