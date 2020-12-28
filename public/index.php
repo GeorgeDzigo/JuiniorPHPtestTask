@@ -2,6 +2,8 @@
 require_once '../db.php';
 require_once '../id.php';
 $data = new Show();
+$data->set();
+$datas = $data->get();
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,8 +34,8 @@ $data = new Show();
   <div class="products">
       <!-- While loop-->
             <?php
-            if($data->show() != 0){
-            foreach($data->show() as $v):
+            if($datas != 0){
+            foreach($datas as $v):
                   if(gettype($v["mb"]) !== "NULL") $a = "Size: ".$v["mb"] . "MB";
                   else if(gettype($v['kg']) !== "NULL") $a = "Weight: ".$v["kg"] . "KG";
                   else $a = "Dimension: ". $v['height']."x".$v['width']."x".$v['length'];

@@ -43,16 +43,19 @@ class Save extends DB {
 
 }
 class Show extends DB {
-      public function show(){
+      private $datas;
+
+      public function set() {
             $query = $this->connect()->query("SELECT * FROM products");
             $query->execute();
             if($query->rowCount() > 0){
-            while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                  $dates[] = $row;
-            }
-            return $dates;
-            }
-            return 0;
+            while($row = $query->fetch(PDO::FETCH_ASSOC)) $this->datas[] = $row;
+            } else $this->datas = null;
+      }
+
+      public function get() {
+            if($this->datas != null) return $this->datas;
+            else return 0;
       }
 }
 
