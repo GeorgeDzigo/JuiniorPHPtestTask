@@ -35,7 +35,6 @@ btn.type = "button";
 function inputChecker() {
       let el = document.querySelectorAll("#inputEmail3");
       let er = document.getElementById("errors");
-      let val = [];
       
 
       let se = document.getElementById("inputGroupSelect01");
@@ -52,74 +51,49 @@ function inputChecker() {
       
       er.innerHTML = '';
       errors = [];
+
+
       //  Check if values are empty
       el.forEach(v => {
             for (let i = 0; i < arr.length; i++) {
-                  if (v.name == arr[i]) {
-                        if (v.value == "") {
-                              errors.push(v.placeholder);
-                              btn.type = "button";
-                              er.innerHTML += "<li style='color:red;'>Please, Provide " + v.placeholder + " </li>";
-                        }
-                        //  Check if values have right answer type
-                        
-                              if (v.name == "price") {
-                                    btn.type = "button";
-                                    let ar = v.value.toString().split("");
-                                    ar[ar.indexOf(".")] = 0;
-                                    for (i = 0; i < ar.length; i++) {
-                                          if (parseInt(ar[i]) != ar[i]) {
-                                                btn.type = "button";
-                                                console.log(ar[i]);
-                                               errors.push(v.name);
-                                               er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                               break;
-                                          }
-                                    }
-                             }
-                              else if (v.name == "mb") {
-                                    btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                    if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                    else if(errors.length == 0) btn.type = "submit"
-                              }  
-                              
-                             
-                             
-                              else if (v.name == "hcm") {
-                                    btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                     if (a) {
-                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                          errors.push(v.name);
-                                    }
-                                    else if(errors.length == 0 ) btn.type = "submit";
-                               }
-                               else if (v.name == "wcm") {
-                                    btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                     if (a) {
-                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                          errors.push(v.name);
-                                    }
-                                    else if(errors.length == 0 ) btn.type = "submit";
-                               }
-                               else  if (v.name == "lcm") {
-                                    btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                     if (a) {
-                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                          errors.push(v.name);
-                                    }
-                                    else if(errors.length == 0 ) btn.type = "submit";
-                              }
-                              else  if (v.name == "kg") {
-                                    btn.type = "button";
-                                    let a = /[a-z]/g.test(v.value.toString());
-                                    if (a) er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                    else btn.type = "submit"
-                              }
+                  if (v.name == arr[i] && v.value == "") {
+                        errors.push(v.placeholder);
+                        btn.type = "button";
+                        er.innerHTML += "<li style='color:red;'>Please, Provide " + v.placeholder + " </li>";
                   }
-            }   
+            }      
       });
+      // Check If values are correct
+      if(errors.length == 0) {
+            arr = arr.slice(2);
+            el.forEach(v => {
+                  for (let i = 0; i < arr.length; i++) {
+                        if(v.name == arr[i]){
+                        if (v.name == "price") {
+                              btn.type = "button";
+                              let ar = v.value.toString().split("");
+                              ar[ar.indexOf(".")] = 0;
+                              for (i = 0; i < ar.length; i++) {
+                                    if (parseInt(ar[i]) != ar[i]) {
+                                          btn.type = "button";
+                                          console.log(ar[i]);
+                                          errors.push(v.name);
+                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                          break;
+                                    }
+                              }
+                        }
+                        else {
+                              btn.type = "button";
+                              let a = /[a-z]/g.test(v.value.toString());
+                              if (a) {
+                                    er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                    errors.push(v.name);
+                              }
+                              else if (errors.length == 0) btn.type = "submit";
+                        }
+                        }
+                  }
+            });
+      }
 }
