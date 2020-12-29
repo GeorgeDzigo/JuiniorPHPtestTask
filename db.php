@@ -60,9 +60,12 @@ class Show extends DB {
 }
 
 class Delete extends DB {
-      public function delete($arr) {
+      public function __construct($arr){
+            $this->a = $arr;
+      }
+      public function delete() {
             $sql = $this->connect()->prepare("DELETE FROM products WHERE unique_id = :id");
-            foreach($arr as $v){
+            foreach($this->a as $v){
                   $sql->bindValue(":id", reid($v));
                   $sql->execute();
             }

@@ -1,9 +1,8 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
-      require_once './id.php';
       require_once './db.php';
-      $dl = new Delete();
-      $dl->delete($_POST);
+      $dl = new Delete($_POST);
+      $dl->delete();
       header("location: ./public/");
 }
 

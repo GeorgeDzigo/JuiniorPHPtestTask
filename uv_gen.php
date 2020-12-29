@@ -1,6 +1,4 @@
 <?php
-
-
 function gen($a) {
       $cs = "abcdefghijklmnopqrstuvwxyz123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       $cs = str_split($cs, 1);
