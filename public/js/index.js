@@ -69,28 +69,28 @@ function inputChecker() {
             el.forEach(v => {
                   for (let i = 0; i < arr.length; i++) {
                         if(v.name == arr[i]){
-                        if (v.name == "price") {
-                              btn.type = "button";
-                              let ar = v.value.toString().split("");
-                              ar[ar.indexOf(".")] = 0;
-                              for (i = 0; i < ar.length; i++) {
-                                    if (parseInt(ar[i]) != ar[i]) {
-                                          btn.type = "button";
-                                          errors.push(v.name);
-                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                          break;
+                              if (v.name == "price") {
+                                    btn.type = "button";
+                                    let ar = v.value.toString().split("");
+                                    ar[ar.indexOf(".")] = 0;
+                                    for (i = 0; i < ar.length; i++) {
+                                          if (parseInt(ar[i]) != ar[i]) {
+                                                btn.type = "button";
+                                                errors.push(v.name);
+                                                er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                                break;
+                                          }
                                     }
                               }
-                        }
-                        else {
-                              btn.type = "button";
-                              let a = /[a-z]/g.test(v.value.toString());
-                              if (a) {
-                                    er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
-                                    errors.push(v.name);
+                              else {
+                                    btn.type = "button";
+                                    let a = /[a-z]/g.test(v.value.toString());
+                                    if (a) {
+                                          er.innerHTML += "<li style='color:red;'>Please, Enter Valid: " + v.placeholder + " </li>";
+                                          errors.push(v.name);
+                                    }
+                                    else if (errors.length == 0) btn.type = "submit";
                               }
-                              else if (errors.length == 0) btn.type = "submit";
-                        }
                         }
                   }
             });
