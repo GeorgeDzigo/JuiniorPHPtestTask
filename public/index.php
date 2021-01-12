@@ -1,5 +1,5 @@
 <?php
-require_once '../db.php';
+require_once '../classes/show.class.php';
 require_once '../id.php';
 $data = new Show();
 $data->set();
@@ -18,7 +18,14 @@ $datas = $data->get();
 
   </head>
   <body>
-  <form action="../delete.php" method="POST">
+  <?php  
+      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once '../classes/delete.class.php';
+            $del = new Delete();
+            $del->delete($_POST);
+      }
+  ?>
+  <form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">

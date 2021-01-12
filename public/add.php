@@ -11,9 +11,17 @@
 
   </head>
   <body>
-  
- 
-      <form action="../save.php" method="POST">
+      
+      <?php 
+      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once '../classes/save.class.php';
+            $s = new Save();
+            $s->insertProduct(htmlspecialchars($_POST['sku'], ENT_QUOTES), htmlspecialchars($_POST['name'], ENT_QUOTES), htmlspecialchars($_POST['price'], ENT_QUOTES),
+                                               $_POST['mb'] , $_POST['hcm'] , $_POST['wcm'], 
+                                               $_POST['lcm'], $_POST['kg']); 
+           } 
+      ?>
+      <form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
             <header> 
                   <h3 style="display: inline;">Product Add</h3>
                   <div class="funcs">
