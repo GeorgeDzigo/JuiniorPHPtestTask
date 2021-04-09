@@ -8,8 +8,9 @@ class Show extends DB {
             $query = $this->connect()->query("SELECT * FROM products");
             $query->execute();
             if($query->rowCount() > 0){
-            while($row = $query->fetch(PDO::FETCH_ASSOC)) $this->datas[] = $row;
-            } else $this->datas = null;
+                  while($row = $query->fetch(PDO::FETCH_ASSOC)) $this->datas[] = $row;
+            } 
+            else $this->datas = null;
       }
 
       public function get() {

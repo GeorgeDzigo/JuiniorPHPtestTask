@@ -25,12 +25,11 @@ $datas = $data->get();
             $del->delete($_POST);
       }
   ?>
-  <form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
       <header> 
             <h3 style="display: inline;">Product List</h3>
             <div class="funcs">
-                  <a href="./add.php" class='a' id="a">Add</a>
-                  <input type="submit" value='Mass Delete' class='a'>
+                  <a href="./add.php" class="a">Add</a>
+                  <a class="a" onclick="document.getElementById('delete').submit()">Mass Delete</a>
             </div>
       </header>
 
@@ -39,35 +38,37 @@ $datas = $data->get();
       </center>
      
   <div class="products">
-      <!-- While loop-->
-            <?php
-            if($datas != 0){
-            foreach($datas as $v):
-                  if(gettype($v["mb"]) !== "NULL") $a = "Size: ".$v["mb"] . "MB";
-                  else if(gettype($v['kg']) !== "NULL") $a = "Weight: ".$v["kg"] . "KG";
-                  else $a = "Dimension: ". $v['height']."x".$v['width']."x".$v['length'];
-            ?>
-            <div class="cards d-flex justify-content-center" style="display:inline-block!important">
-      
-                  <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                        <input type="checkbox" value="<?=id($v["unique_id"])?>" name="<?= $v['name']?>">
-                              <h5 class="card-title text-center"><?=$v["sku"]?></h5>
-                              <h5 class="card-title text-center"><?=$v["name"]?></h5>
+      <form id="delete" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+            <!-- While loop-->
+                  <?php
+                  if($datas != 0){
+                  foreach($datas as $v):
+                        if(gettype($v["mb"]) !== "NULL") $a = "Size: ".$v["mb"] . "MB";
+                        else if(gettype($v['kg']) !== "NULL") $a = "Weight: ".$v["kg"] . "KG";
+                        else $a = "Dimension: ". $v['height']."x".$v['width']."x".$v['length'];
+                  ?>
+                  <div class="cards d-flex justify-content-center" style="display:inline-block!important">
+            
+                        <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                              <input type="checkbox" value="<?=id($v["unique_id"])?>" name="<?= $v['name']?>">
+                                    <h5 class="card-title text-center"><?=$v["sku"]?></h5>
+                                    <h5 class="card-title text-center"><?=$v["name"]?></h5>
+                              </div>
+                                    <ul class="list-group list-group-flush">
+                                    <li class="list-group-item text-center prices"><?=$v["price"] . "$"?></li>
+                                    <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?=$a?></li>
+                              </ul>
                         </div>
-                              <ul class="list-group list-group-flush">
-                              <li class="list-group-item text-center prices"><?=$v["price"] . "$"?></li>
-                              <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?=$a?></li>
-                        </ul>
                   </div>
-            </div>
-            <?php 
-            endforeach;
-            }?>
+                  <?php 
+                  endforeach;
+                  }?>
+            </form>
+
       </div>
      
       <!-- End While -->
-      </form>
      
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

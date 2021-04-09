@@ -21,12 +21,11 @@
                                                $_POST['lcm'], $_POST['kg']); 
            } 
       ?>
-      <form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
             <header> 
                   <h3 style="display: inline;">Product Add</h3>
                   <div class="funcs">
-                        <input  type="button" value="Save" class="a" id="btn" onclick="inputChecker()" onclick="checkErrors()">
-                        <a href="./index.php" class="a" id="b">Cancel</a>
+                        <a class="a" onclick="inputChecker()">Save</a>
+                        <a class="a" href="./index.php">Cancel</a>
                   </div>
             </header>
 
@@ -34,81 +33,137 @@
                   <hr style="width: 87%;" class="hr">     
             </center>
 
-<div class="inputs">
-      <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">SKU</label>
-            <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="SKU" name="sku">
-            </div>
-      </div>
-      
-      <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="Name" name="name">
-            </div>
-      </div>
-
-      <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Price ($)</label>
-            <div class="col-sm-10">
-                  <input type="decimal" min="0.00" class="form-control" id="inputEmail3" placeholder="Price" name="price">
-            </div>
-      </div>
-
-
-      <div class="input-group mb-3" style="top: 20px;">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Type Switcher</label>
-
-            <select class="custom-select" id="inputGroupSelect01" onchange="show()">
-                  <option value="Type_Switcher">Type Switcher</option>
-                  <option value="MB">MB</option>
-                  <option value="CM">CM</option>
-                  <option value="KG">KG</option>
-            </select>
-      </div>
-
-
-      <!-- MB -->
-      <div class="form-group row" id="mb">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Size (MB)</label>
-            <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Size"name='mb'>
-            </div>
-      </div>
-
-      <!-- CM -->
-      <div id="cm">
+<form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+      <div class="inputs">
             <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Height (CM)</label>
+                  <label for="sku" class="col-sm-2 col-form-label">SKU</label>
                   <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Height" name="hcm">
+                        <input 
+                              type="text" 
+                              class="form-control" 
+                              id="string" 
+                              placeholder="SKU" 
+                              name="sku"
+                        >
                   </div>
             </div>
+            
             <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Width (CM)</label>
+                  <label for="name" class="col-sm-2 col-form-label">Name</label>
                   <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Width" name="wcm">
+                        <input 
+                              type="text"
+                              class="form-control"
+                              id="string"
+                              placeholder="Name"
+                              name="name"
+                        >
                   </div>
             </div>
-            <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Length (CM)</label>
-                  <div class="col-sm-10">
-                        <input type="decimal" class="form-control" id="inputEmail3" placeholder="Length" name="lcm">
-                  </div>
-            </div>
-      </div>
-      <!-- KG -->
-      <div class="form-group row" id="kg">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Weight (KG)</label>
-            <div class="col-sm-10">
-                  <input type="decimal" class="form-control" id="inputEmail3" placeholder="Weight" name="kg">
-            </div>
-      </div>
 
-      <p id="errors" name="errors"></p>
-      
-</div>
+            <div class="form-group row">
+                  <label for="price" class="col-sm-2 col-form-label">Price ($)</label>
+                  <div class="col-sm-10">
+                        <input 
+                              type="decimal"
+                              min="0.00" 
+                              class="form-control" 
+                              id="int-dec"
+                              placeholder="Price"
+                              name="price"
+                              value=""
+                        >
+                  </div>
+            </div>
+
+
+            <div class="input-group mb-3" style="top: 20px;">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Type Switcher</label>
+
+                  <select class="sizes-option" id="string" onchange="show()">
+                        <option value="Type_Switcher">Type Switcher</option>
+                        <option value="MB">MB</option>
+                        <option value="CM">CM</option>
+                        <option value="KG">KG</option>
+                  </select>
+            </div>
+
+
+            <!-- MB -->
+            <div class="form-group row size-type" id="mb">
+                  <label for="size-mb" class="col-sm-2 col-form-label">Size (MB)</label>
+                  <div class="col-sm-10">
+                        <input 
+                              type="decimal" 
+                              class="form-control" 
+                              id="int" 
+                              placeholder="Size"
+                              name="mb"
+                              value=""
+                        >
+                  </div>
+            </div>
+
+            <!-- CM -->
+            <div class="size-type" id="cm">
+                  <div class="form-group row">
+                        <label for="height-cm" class="col-sm-2 col-form-label">Height (CM)</label>
+                        <div class="col-sm-10">
+                              <input 
+                                    type="decimal" 
+                                    class="form-control" 
+                                    id="int" 
+                                    placeholder="Height" 
+                                    name="hcm"
+                                    value=""
+                              >
+                        </div>
+                  </div>
+                  <div class="form-group row">
+                        <label for="width-cm" class="col-sm-2 col-form-label">Width (CM)</label>
+                        <div class="col-sm-10">
+                              <input 
+                                    type="decimal" 
+                                    class="form-control" 
+                                    id="int" 
+                                    placeholder="Width" 
+                                    name="wcm"
+                                    value=""
+                              >
+                        </div>
+                  </div>
+                  <div class="form-group row">
+                        <label for="length-cm" class="col-sm-2 col-form-label">Length (CM)</label>
+                        <div class="col-sm-10">
+                              <input 
+                                    type="decimal" 
+                                    class="form-control" 
+                                    id="int" 
+                                    placeholder="Length" 
+                                    name="lcm"
+                                    value=""
+                              >
+                        </div>
+                  </div>
+            </div>
+            <!-- KG -->
+            <div class="form-group row size-type" id="kg">
+                  <label for="weight-kg" class="col-sm-2 col-form-label">Weight (KG)</label>
+                  <div class="col-sm-10">
+                        <input 
+                              type="decimal" 
+                              class="form-control" 
+                              id="int" 
+                              placeholder="Weight" 
+                              name="kg"
+                              value=""
+                        >
+                  </div>
+            </div>
+
+            <p id="errors"></p>
+            
+      </div>
 </form>
       
       <!-- Scripts -->

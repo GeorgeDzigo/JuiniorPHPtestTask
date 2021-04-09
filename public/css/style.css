@@ -16,12 +16,6 @@ h3 {
       left: 13%;
 }
 
-#a {
-      padding: 0.4em 30px;
-}
-#b {
-      padding: 0.4em 30px;
-}
 .a {
       background-color: white;
       color: black;
@@ -30,10 +24,7 @@ h3 {
       border-radius: 4px;
       font-weight: bold;
       border: 1px solid #606060;       
-}
-
-#a{
-      padding: 6px 30px;
+      cursor: pointer;
 }
 
 .hr{
