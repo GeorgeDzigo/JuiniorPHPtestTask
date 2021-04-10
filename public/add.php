@@ -24,7 +24,7 @@
             <header> 
                   <h3 style="display: inline;">Product Add</h3>
                   <div class="funcs">
-                        <a class="a" onclick="inputChecker()">Save</a>
+                        <a class="a" onclick="submitData()">Save</a>
                         <a class="a" href="./index.php">Cancel</a>
                   </div>
             </header>
@@ -33,9 +33,9 @@
                   <hr style="width: 87%;" class="hr">     
             </center>
 
-<form action="<?= $_SERVER['PHP_SELF']?>" method="POST">
+<form action="<?= $_SERVER['PHP_SELF']?>" method="POST" id="datatosubmit">
       <div class="inputs">
-            <div class="form-group row">
+            <div class="form-group row stable-inputs">
                   <label for="sku" class="col-sm-2 col-form-label">SKU</label>
                   <div class="col-sm-10">
                         <input 
@@ -48,7 +48,7 @@
                   </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row stable-inputs">
                   <label for="name" class="col-sm-2 col-form-label">Name</label>
                   <div class="col-sm-10">
                         <input 
@@ -61,7 +61,7 @@
                   </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row stable-inputs">
                   <label for="price" class="col-sm-2 col-form-label">Price ($)</label>
                   <div class="col-sm-10">
                         <input 
@@ -82,15 +82,15 @@
 
                   <select class="sizes-option" id="string" onchange="show()">
                         <option value="Type_Switcher">Type Switcher</option>
-                        <option value="MB">MB</option>
-                        <option value="CM">CM</option>
-                        <option value="KG">KG</option>
+                        <option value="size">MB</option>
+                        <option value="dimensions">CM</option>
+                        <option value="weight">KG</option>
                   </select>
             </div>
 
 
             <!-- MB -->
-            <div class="form-group row size-type" id="mb">
+            <div class="form-group row size-type" id="size">
                   <label for="size-mb" class="col-sm-2 col-form-label">Size (MB)</label>
                   <div class="col-sm-10">
                         <input 
@@ -105,7 +105,7 @@
             </div>
 
             <!-- CM -->
-            <div class="size-type" id="cm">
+            <div class="size-type" id="dimensions">
                   <div class="form-group row">
                         <label for="height-cm" class="col-sm-2 col-form-label">Height (CM)</label>
                         <div class="col-sm-10">
@@ -147,7 +147,7 @@
                   </div>
             </div>
             <!-- KG -->
-            <div class="form-group row size-type" id="kg">
+            <div class="form-group row size-type" id="weight">
                   <label for="weight-kg" class="col-sm-2 col-form-label">Weight (KG)</label>
                   <div class="col-sm-10">
                         <input 
@@ -162,6 +162,7 @@
             </div>
 
             <p id="errors"></p>
+            <p id="size-type-errors"></p>
             
       </div>
 </form>
