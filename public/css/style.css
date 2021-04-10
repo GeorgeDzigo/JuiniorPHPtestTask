@@ -64,7 +64,7 @@ h3 {
 
 /* Switcher */
 
-#mb , #cm, #kg {
+#size , #dimensions, #weight {
       display: none;
 }
 
