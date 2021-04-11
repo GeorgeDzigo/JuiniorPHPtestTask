@@ -16,9 +16,7 @@
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once '../classes/save.class.php';
             $s = new Save();
-            $s->insertProduct(htmlspecialchars($_POST['sku'], ENT_QUOTES), htmlspecialchars($_POST['name'], ENT_QUOTES), htmlspecialchars($_POST['price'], ENT_QUOTES),
-                                               $_POST['mb'] , $_POST['hcm'] , $_POST['wcm'], 
-                                               $_POST['lcm'], $_POST['kg']); 
+            $s->insertProduct($_POST); 
            } 
       ?>
             <header> 

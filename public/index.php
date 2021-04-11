@@ -2,8 +2,7 @@
 require_once '../classes/show.class.php';
 require_once '../id.php';
 $data = new Show();
-$data->set();
-$datas = $data->get();
+$datas = $data->getData();
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,9 +42,7 @@ $datas = $data->get();
                   <?php
                   if($datas != 0){
                   foreach($datas as $v):
-                        if(gettype($v["mb"]) !== "NULL") $a = "Size: ".$v["mb"] . "MB";
-                        else if(gettype($v['kg']) !== "NULL") $a = "Weight: ".$v["kg"] . "KG";
-                        else $a = "Dimension: ". $v['height']."x".$v['width']."x".$v['length'];
+                        
                   ?>
                   <div class="cards d-flex justify-content-center" style="display:inline-block!important">
             
@@ -57,7 +54,7 @@ $datas = $data->get();
                               </div>
                                     <ul class="list-group list-group-flush">
                                     <li class="list-group-item text-center prices"><?=$v["price"] . "$"?></li>
-                                    <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?=$a?></li>
+                                    <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?= $v["size"]?></li>
                               </ul>
                         </div>
                   </div>

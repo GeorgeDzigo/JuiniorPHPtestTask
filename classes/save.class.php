@@ -9,22 +9,18 @@ function gen($a) {
 }
 
 class Save extends DB {
-      public function insertProduct($sku, $n, $price, $mb , $hcm, $wcm, $lcm, $wkg) {
-            $bnd = array_map(function($x) {
-                  return $x == "" ? null : $x;
-            }, [$sku, $n, $price, $mb, $hcm, $wcm, $lcm, $wkg]);
-            $data = $this->connect()->prepare("INSERT INTO products (sku, name, price, mb, height, width, length, kg, unique_id)
-                  VALUES(:s, :n, :p, :m, :h, :w, :l, :k, :uv)
+      public function insertProduct($post) {
+            $post = array_map(function ($x)  {return $x == "" ? null : $x;} , $post);
+            $data = $this->connect()->prepare("INSERT INTO products (unique_id, sku, name, price, mb, dimension, kg)
+                  VALUES(:uv, :s, :n, :p, :m, :dimension, :k)
             ");
-            $data->bindValue(':s', $bnd[0]);
-            $data->bindValue(':n', $bnd[1]);
-            $data->bindValue(':p', $bnd[2]);
-            $data->bindValue(':m', $bnd[3]);
-            $data->bindValue(':h', $bnd[4]);
-            $data->bindValue(':w', $bnd[5]);
-            $data->bindValue(':l', $bnd[6]);
-            $data->bindValue(':k', $bnd[7]);
             $data->bindValue(':uv', gen(7));
+            $data->bindValue(':s', $post["sku"]);
+            $data->bindValue(':n', $post["name"]);
+            $data->bindValue(':p', $post["price"]);
+            $data->bindValue(':m', $post["mb"]);
+            $data->bindValue(":dimension", "$post[hcm]x$post[wcm]x$post[lcm]");
+            $data->bindValue(':k', $post["kg"]);
             $data->execute();
             header("Location: ./add.php");
       }
