@@ -36,7 +36,7 @@ $datas = $data->getData();
             <hr style="width: 87%;" class="hr">     
       </center>
      
-  <div class="products">
+      <div class="products">
       <form id="delete" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
             <!-- While loop-->
                   <?php
@@ -48,7 +48,7 @@ $datas = $data->getData();
             
                         <div class="card" style="width: 18rem;">
                               <div class="card-body">
-                              <input type="checkbox" value="<?=id($v["unique_id"])?>" name="<?= $v['name']?>">
+                              <input type="checkbox" value="<?=id($v["unique_id"])?>" name="<?= id($v['unique_id'])?>">
                                     <h5 class="card-title text-center"><?=$v["sku"]?></h5>
                                     <h5 class="card-title text-center"><?=$v["name"]?></h5>
                               </div>
