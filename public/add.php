@@ -14,9 +14,10 @@
       
       <?php 
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            require_once '../classes/save.class.php';
-            $s = new Save();
-            $s->insertProduct($_POST); 
+            require_once '../classes/ProductBase.class.php';
+            
+            ProductBaseClass::create($_POST);
+            
            } 
       ?>
             <header> 

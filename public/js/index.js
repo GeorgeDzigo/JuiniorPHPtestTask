@@ -1,5 +1,6 @@
-var errorDisplay = document.getElementById("errors");
-var sizeTypeErrors = document.getElementById("size-type-errors");
+const errorDisplay = document.getElementById("errors");
+const sizeTypeErrors = document.getElementById("size-type-errors");
+
 function show() {
       var d = document.querySelector(".sizes-option");
       var dis = d.options[d.selectedIndex].value;
@@ -22,7 +23,7 @@ function show() {
 
 //This function validates stable inputs (SKU, NAME, PRICE)
 function stableInputsValidation() {
-      // This inputs are SKU, Name and Price
+      // This inputs: SKU, Name, Price
       let inputs = document.querySelectorAll(".stable-inputs");
       let errors = [];
 
@@ -30,7 +31,7 @@ function stableInputsValidation() {
             let childInput = parent.querySelector(".form-control");
             if (childInput.value == "") {
                   errors.push(childInput.name);
-                  errorDisplay.innerHTML += `<h4>Please, provide the data for ${childInput.placeholder}</h4>`
+                  errorDisplay.innerHTML += `<h4>Please, provide the data for ${childInput.placeholder}</h4>`;
             }
             else if (childInput.name == "price") {
                 
