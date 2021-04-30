@@ -7,7 +7,7 @@ abstract class MainProductLogic
 {
     abstract public static function create($product);
     abstract public static function products();
-    abstract public function delete($id);    
+    abstract public static function delete($id);    
 }
 
 class ProductBaseClass extends MainProductLogic
@@ -52,13 +52,25 @@ class ProductBaseClass extends MainProductLogic
         return $data;
     }
 
-    public function delete($id)
+    public static function delete($products)
     {
-        // 
+        foreach($products["id"] as $id)
+        {
+            Connection::db()->query("DELETE FROM products WHERE id = " . $id);
+        }
+        return header('Location: ./index.php');
     } 
 
 
     /* Setters and Getters */
     
-    
+    public function __set($key, $value)
+    {
+        $this->$key = $value;
+    }
+
+    public function __get($key) 
+    {
+        return $this->$key;
+    }
 }

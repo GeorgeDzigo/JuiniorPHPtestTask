@@ -26,21 +26,40 @@ include '../classes/ProductBase.class.php';
       <center>
             <hr style="width: 87%;" class="hr">     
       </center>
-     <?php if (count(ProductBaseClass::products()) != 0) {?>
+     <?php 
+     
+     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+           ProductBaseClass::delete($_POST);
+     }
+     
+     
+     if (count(ProductBaseClass::products()) != 0) 
+     {
+      
+      ?>
       <div class="products">
             <form id="delete" action="<?= $_SERVER['PHP_SELF']?>" method="POST">
                         
-                  <?php foreach(ProductBaseClass::products() as $product) { ?>
+                  <?php foreach(ProductBaseClass::products() as $product) {
+
+                        $PBC = new ProductBaseClass();
+                        $PBC->__set('id', $product['id']);
+                        $PBC->__set('sku', $product['sku']);     
+                        $PBC->__set('name', $product['name']); 
+                        $PBC->__set('price', $product['price']); 
+                        $PBC->__set('type', $product['type']); 
+
+                  ?>
                         <div class="cards d-flex justify-content-center" style="display:inline-block!important">
                               <div class="card" style="width: 18rem;">
                                     <div class="card-body">
-                                    <input type="checkbox" value="sad" name="sad">
-                                          <h5 class="card-title text-center"><?= $product['sku']?></h5>
-                                          <h5 class="card-title text-center"><?= $product['name']?></h5>
+                                    <input type="checkbox" value="<?= $PBC->__get('id') ?>" name="id[]">
+                                          <h5 class="card-title text-center"><?= $PBC->__get('sku') ?></h5>
+                                          <h5 class="card-title text-center"><?= $PBC->__get('name') ?></h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                          <li class="list-group-item text-center prices"><?= $product['price']?></li>
-                                          <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?= $product['type']?></li>
+                                          <li class="list-group-item text-center prices"><?= $PBC->__get('price') ?></li>
+                                          <li class="list-group-item text-center" style="padding: 0.5rem .4rem !important;"><?= $PBC->__get('type') ?></li>
                                     </ul>
                               </div>
                         </div>
