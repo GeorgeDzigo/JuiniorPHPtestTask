@@ -1,7 +1,9 @@
 const errorDisplay = document.getElementById("errors");
 const sizeTypeErrors = document.getElementById("size-type-errors");
 
-function show() {
+function show()
+{
+      errorDisplay.innerHTML = "";
       var d = document.querySelector(".sizes-option");
       var dis = d.options[d.selectedIndex].value;
       let el = document.querySelectorAll(".size-type");
@@ -12,66 +14,76 @@ function show() {
       });
     
       // Changing all of them their display to none
-      document.getElementById("size").style.display = "none";
-      document.getElementById("dimensions").style.display = "none";
-      document.getElementById("weight").style.display = "none";
+      let size = document.getElementById('size');
+      size.style.display = 'none';
+      size.classList.remove('selected');
+
+      let dimensions = document.getElementById('dimensions');
+      dimensions.style.display = 'none';
+      dimensions.classList.remove('selected');
+
+      let weight = document.getElementById('weight')
+      weight.style.display = 'none';
+      weight.classList.remove('selected');
       
       // Change display to block to selected size type
       document.getElementById(dis).style.display = "block";
+      document.getElementById(dis).classList.add("selected");
       return dis;
 }
 
-//This function validates stable inputs (SKU, NAME, PRICE)
-function stableInputsValidation() {
-      // This inputs: SKU, Name, Price
-      let inputs = document.querySelectorAll(".stable-inputs");
+// This function checks blank inputs
+function blankInputsCheck()
+{
       let errors = [];
+      let defaultInputs = document.querySelectorAll("#default-input");
+      let selectedTypeInputs = document.querySelector('.selected').querySelectorAll(".form-control");
 
-      inputs.forEach(parent => {
-            let childInput = parent.querySelector(".form-control");
-            if (childInput.value == "") {
-                  errors.push(childInput.name);
-                  errorDisplay.innerHTML += `<h4>Please, provide the data for ${childInput.placeholder}</h4>`;
-            }
-            else if (childInput.name == "price") {
-                
-                  if (parseFloat(childInput.value) != childInput.value) {
-                        errors.push(childInput.name);
-                        errorDisplay.innerHTML += `<h4>Please, provide the valid ${childInput.placeholder}</h4>`
-                  }
+      let allInputs = Array.from(defaultInputs).concat(Array.from(selectedTypeInputs));
+      
+      allInputs.forEach(input => {
+            if (input.value == "") {
+                  errors.push(input.placeholder);
+                  errorDisplay.innerHTML += "<li>Please submit " + input.placeholder + "</li>";
             }
       });
       return errors;
 }
 
-//This function validates size type inputs 
-function sizeTypeInputsValidation() {
-      let inputs = document.getElementById(show()).querySelectorAll(".form-control");
+
+// This function checks selected type inputs
+function selectedTypeInputsCheck()
+{
+      let selectedTypeInputs = document.querySelector('.selected').querySelectorAll(".form-control");
       let errors = [];
-      if (show() == "Type_Switcher") {
-            errors.push(show());
-      }
-      inputs.forEach(v => {
-            if (v.value == "") {
-                  errors.push(v.name);
-                  sizeTypeErrors.innerHTML = `<h4>Please, provide ${show()}</h4>`
-            }
-            else {
-                  if (parseInt(v.value) != v.value) {
-                        errors.push(v.name);
-                        errorDisplay.innerHTML += `<h4>Please, provide valid ${v.placeholder}</h4>`
-                  }
+      selectedTypeInputs.forEach(input => {
+            if (parseInt(input.value) != input.value) {
+                  errors.push(input.placeholder);
+                  errorDisplay.innerHTML += "<li>Please provide valid " + input.placeholder + "</li>";
             }
       });
       return errors;
+}
+
+function priceInputCheck()
+{
+      let priceInput = document.querySelector('.price');
+      
+      if (priceInput.value.match(/^\d{0,8}(\.\d{1,2})?$/) == null)
+      {
+            errorDisplay.innerHTML += "<li>Please Provide valid Price</li>";
+            return[ priceInput.placeholder];
+      }
 }
 
 // This function will submit data if there are no errors
-function submitData() {
+function submitData()
+{
       errorDisplay.innerHTML = "";
       sizeTypeErrors.innerHTMl = "";
-      let stableInputs = stableInputsValidation();
-      let unstableInputs = sizeTypeInputsValidation();
+      let blankInputs = blankInputsCheck();
+      let priceInput = priceInputCheck();
+      let selectedInputs = selectedTypeInputsCheck();
 
-      if (stableInputs.length == 0 && unstableInputs.length == 0) document.getElementById("datatosubmit").submit();
+      if (blankInputs.length == 0 && priceInput.length == 0 &&selectedInputs.length == 0) console.log("Submit the data");
 }

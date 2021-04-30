@@ -40,7 +40,7 @@
                         <input 
                               type="text" 
                               class="form-control" 
-                              id="string" 
+                              id="default-input" 
                               placeholder="SKU" 
                               name="sku"
                         >
@@ -53,7 +53,7 @@
                         <input 
                               type="text"
                               class="form-control"
-                              id="string"
+                              id="default-input"
                               placeholder="Name"
                               name="name"
                         >
@@ -66,8 +66,8 @@
                         <input 
                               type="decimal"
                               min="0.00" 
-                              class="form-control" 
-                              id="int-dec"
+                              class="form-control price" 
+                              id="default-input"
                               placeholder="Price"
                               name="price"
                               value=""
@@ -79,7 +79,7 @@
             <div class="input-group mb-3" style="top: 20px;">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Type Switcher</label>
 
-                  <select class="sizes-option" id="string" onchange="show()">
+                  <select class="sizes-option" onchange="show()">
                         <option value="Type_Switcher">Type Switcher</option>
                         <option value="size">MB</option>
                         <option value="dimensions">CM</option>
@@ -169,6 +169,6 @@
       <!-- Scripts -->
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <!-- My Scripts -->
-    <script src="js/index.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
