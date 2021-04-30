@@ -85,5 +85,5 @@ function submitData()
       let priceInput = priceInputCheck();
       let selectedInputs = selectedTypeInputsCheck();
 
-      if (blankInputs.length == 0 && priceInput.length == 0 &&selectedInputs.length == 0) console.log("Submit the data");
+      if (blankInputs.length == 0 && priceInput.length == 0 &&selectedInputs.length == 0) document.getElementById("datatosubmit").submit();
 }
