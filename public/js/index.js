@@ -68,12 +68,14 @@ function selectedTypeInputsCheck()
 function priceInputCheck()
 {
       let priceInput = document.querySelector('.price');
-      
+      let errors = []
+
       if (priceInput.value.match(/^\d{0,8}(\.\d{1,2})?$/) == null)
       {
             errorDisplay.innerHTML += "<li>Please Provide valid Price</li>";
-            return[ priceInput.placeholder];
+            errors.push(priceInput.placeholder);
       }
+      return errors;
 }
 
 // This function will submit data if there are no errors
